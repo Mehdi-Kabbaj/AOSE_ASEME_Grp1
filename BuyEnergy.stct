@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF8"?>
+<statechart:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:statechart="http://statechart/1.0" name="BuyEnergy">
+  <nodes name="BuyEnergy" label="0" type="OR">
+    <Children name="0.1" label="0.1" type="START"/>
+    <Children name="BuyEnergy_Consumers_parallel_BuyEnergy_Producers" label="0.2" type="AND">
+      <Children name="0.2.1" label="0.2.1" type="OR">
+        <Children name="0.2.1.1" label="0.2.1.1" type="START"/>
+        <Children name="BuyEnergy_Consumers" label="0.2.1.2" type="OR">
+          <Children name="0.2.1.2.1" label="0.2.1.2.1" type="START"/>
+          <Children name="_open_group_ChooseProducer_sequence_SendMessage_Consumers_close_group_" label="0.2.1.2.2" type="OR">
+            <Children name="0.2.1.2.2.1" label="0.2.1.2.2.1" type="START"/>
+            <Children name="ChooseProducer" label="0.2.1.2.2.2" type="BASIC"/>
+            <Children name="SendMessage_Consumers" label="0.2.1.2.2.3" type="BASIC"/>
+            <Children name="0.2.1.2.2.4" label="0.2.1.2.2.4" type="END"/>
+          </Children>
+          <Children name="0.2.1.2.3" label="0.2.1.2.3" type="END"/>
+        </Children>
+        <Children name="0.2.1.3" label="0.2.1.3" type="END"/>
+      </Children>
+      <Children name="0.2.2" label="0.2.2" type="OR">
+        <Children name="0.2.2.1" label="0.2.2.1" type="START"/>
+        <Children name="BuyEnergy_Producers" label="0.2.2.2" type="OR">
+          <Children name="0.2.2.2.1" label="0.2.2.2.1" type="START"/>
+          <Children name="receiveMessage_Producers" label="0.2.2.2.2" type="BASIC"/>
+          <Children name="0.2.2.2.3" label="0.2.2.2.3" type="END"/>
+        </Children>
+        <Children name="0.2.2.3" label="0.2.2.3" type="END"/>
+      </Children>
+    </Children>
+    <Children name="0.3" label="0.3" type="END"/>
+  </nodes>
+  <transitions name="0.1TOBuyEnergy_Consumers_parallel_BuyEnergy_Producers" source="//@nodes.0/@Children.0" target="//@nodes.0/@Children.1"/>
+  <transitions name="BuyEnergy_Consumers_parallel_BuyEnergy_ProducersTO0.3" source="//@nodes.0/@Children.1" target="//@nodes.0/@Children.2"/>
+  <transitions name="0.2.1.1TOBuyEnergy_Consumers" source="//@nodes.0/@Children.1/@Children.0/@Children.0" target="//@nodes.0/@Children.1/@Children.0/@Children.1"/>
+  <transitions name="BuyEnergy_ConsumersTO0.2.1.3" source="//@nodes.0/@Children.1/@Children.0/@Children.1" target="//@nodes.0/@Children.1/@Children.0/@Children.2"/>
+  <transitions name="0.2.2.1TOBuyEnergy_Producers" source="//@nodes.0/@Children.1/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="BuyEnergy_ProducersTO0.2.2.3" source="//@nodes.0/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.1/@Children.2"/>
+  <transitions name="0.2.1.2.2.1TOChooseProducer" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="ChooseProducerTOSendMessage_Consumers" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.2"/>
+  <transitions name="SendMessage_ConsumersTO0.2.1.2.2.4" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.2" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.3"/>
+  <transitions name="0.2.1.2.1TO_open_group_ChooseProducer_sequence_SendMessage_Consumers_close_group_" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1"/>
+  <transitions name="_open_group_ChooseProducer_sequence_SendMessage_Consumers_close_group_TO_open_group_ChooseProducer_sequence_SendMessage_Consumers_close_group_" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1"/>
+  <transitions name="_open_group_ChooseProducer_sequence_SendMessage_Consumers_close_group_TO0.2.1.2.3" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.2"/>
+  <transitions name="0.2.2.2.1TOreceiveMessage_Producers" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="receiveMessage_ProducersTOreceiveMessage_Producers" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="receiveMessage_ProducersTO0.2.2.2.3" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.2"/>
+</statechart:Model>

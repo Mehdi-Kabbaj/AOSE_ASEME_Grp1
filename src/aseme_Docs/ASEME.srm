@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SRM:SRMmodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SRM="http://www.amcl.tuc.gr/aseme/metamodels/SRM">
+  <activities name="MaximizeUtilities" functionality="//@functionalities.0"/>
+  <activities name="ReceiveMessage_Consumers" functionality="//@functionalities.1"/>
+  <activities name="ChooseProducer" functionality="//@functionalities.0"/>
+  <activities name="SendMessage_Consumers" functionality="//@functionalities.1"/>
+  <activities name="MaximizeGain" functionality="//@functionalities.0"/>
+  <activities name="SendMessage_Producers" functionality="//@functionalities.1"/>
+  <activities name="receiveMessage_Producers" functionality="//@functionalities.1"/>
+  <activities name="PriceCheck" functionality="//@functionalities.0"/>
+  <activities name="SendMessage_MarketPlace" functionality="//@functionalities.1"/>
+  <activities name="AddTheOfferToTheTable" functionality="//@functionalities.2"/>
+  <activities name="ReceiveMessage_MarketPlace" functionality="//@functionalities.1"/>
+  <capabilities name="BuyEnergy_Consumers" capability_activities="//@activities.2 //@activities.3"/>
+  <capabilities name="ConsultTable_Consumers" capability_activities="//@activities.1 //@activities.3"/>
+  <capabilities name="BuyEnergy_Producers" capability_activities="//@activities.6"/>
+  <capabilities name="Advertising_Producers" capability_activities="//@activities.5 //@activities.7"/>
+  <capabilities name="Advertising_MarketPlace" capability_activities="//@activities.9 //@activities.10"/>
+  <capabilities name="ConsultTable_MarketPlace" capability_activities="//@activities.8 //@activities.10"/>
+  <roles role_activities="//@activities.0 //@activities.1 //@activities.2 //@activities.3" liveness="Consumers=ConsultTable_Consumers||BuyEnergy_Consumers&#xD;&#xA;BuyEnergy_Consumers=(ChooseProducer.SendMessage_Consumers)+&#xD;&#xA;ConsultTable_Consumers=(SendMessage_Consumers.ReceiveMessage_Consumers)+" name="Consumers" capabilities="//@capabilities.0 //@capabilities.1"/>
+  <roles role_activities="//@activities.4 //@activities.5 //@activities.6 //@activities.7" liveness="Producers=Advertising_Producers||BuyEnergy_Producers&#xD;&#xA;BuyEnergy_Producers=receiveMessage_Producers+&#xD;&#xA;Advertising_Producers=(PriceCheck.SendMessage_Producers)+&#xD;&#xD;&#xA;&#xD;&#xA;" name="Producers" capabilities="//@capabilities.2 //@capabilities.3"/>
+  <roles role_activities="//@activities.8 //@activities.9 //@activities.10" liveness="MarketPlace=Advertising_MarketPlace||ConsultTable_MarketPlace&#xD;&#xA;Advertising_MarketPlace=(ReceiveMessage_MarketPlace.AddTheOfferToTheTable)+&#xD;&#xA;ConsultTable_MarketPlace=(ReceiveMessage_MarketPlace.SendMessage_MarketPlace)+ &#xD;&#xA;" name="MarketPlace" capabilities="//@capabilities.4 //@capabilities.5"/>
+  <functionalities description="Decision Theory" activities="//@activities.0 //@activities.2 //@activities.4 //@activities.7"/>
+  <functionalities description="FIPA Message Exchange" activities="//@activities.6 //@activities.1 //@activities.3 //@activities.5 //@activities.10 //@activities.8"/>
+  <functionalities description="List Management" activities="//@activities.9"/>
+</SRM:SRMmodel>

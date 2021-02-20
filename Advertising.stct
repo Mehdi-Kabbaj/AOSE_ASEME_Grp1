@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF8"?>
+<statechart:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:statechart="http://statechart/1.0" name="Advertising">
+  <nodes name="Advertising" label="0" type="OR">
+    <Children name="0.1" label="0.1" type="START"/>
+    <Children name="Advertising_Producers_parallel_Advertising_MarketPlace" label="0.2" type="AND">
+      <Children name="0.2.1" label="0.2.1" type="OR">
+        <Children name="0.2.1.1" label="0.2.1.1" type="START"/>
+        <Children name="Advertising_Producers" label="0.2.1.2" type="OR">
+          <Children name="0.2.1.2.1" label="0.2.1.2.1" type="START"/>
+          <Children name="_open_group_PriceCheck_sequence_SendMessage_Producers_close_group_" label="0.2.1.2.2" type="OR">
+            <Children name="0.2.1.2.2.1" label="0.2.1.2.2.1" type="START"/>
+            <Children name="PriceCheck" label="0.2.1.2.2.2" type="BASIC"/>
+            <Children name="SendMessage_Producers" label="0.2.1.2.2.3" type="BASIC"/>
+            <Children name="0.2.1.2.2.4" label="0.2.1.2.2.4" type="END"/>
+          </Children>
+          <Children name="0.2.1.2.3" label="0.2.1.2.3" type="END"/>
+        </Children>
+        <Children name="0.2.1.3" label="0.2.1.3" type="END"/>
+      </Children>
+      <Children name="0.2.2" label="0.2.2" type="OR">
+        <Children name="0.2.2.1" label="0.2.2.1" type="START"/>
+        <Children name="Advertising_MarketPlace" label="0.2.2.2" type="OR">
+          <Children name="0.2.2.2.1" label="0.2.2.2.1" type="START"/>
+          <Children name="_open_group_ReceiveMessage_MarketPlace_sequence_AddTheOfferToTheTable_close_group_" label="0.2.2.2.2" type="OR">
+            <Children name="0.2.2.2.2.1" label="0.2.2.2.2.1" type="START"/>
+            <Children name="ReceiveMessage_MarketPlace" label="0.2.2.2.2.2" type="BASIC"/>
+            <Children name="AddTheOfferToTheTable" label="0.2.2.2.2.3" type="BASIC"/>
+            <Children name="0.2.2.2.2.4" label="0.2.2.2.2.4" type="END"/>
+          </Children>
+          <Children name="0.2.2.2.3" label="0.2.2.2.3" type="END"/>
+        </Children>
+        <Children name="0.2.2.3" label="0.2.2.3" type="END"/>
+      </Children>
+    </Children>
+    <Children name="0.3" label="0.3" type="END"/>
+  </nodes>
+  <transitions name="0.1TOAdvertising_Producers_parallel_Advertising_MarketPlace" source="//@nodes.0/@Children.0" target="//@nodes.0/@Children.1"/>
+  <transitions name="Advertising_Producers_parallel_Advertising_MarketPlaceTO0.3" source="//@nodes.0/@Children.1" target="//@nodes.0/@Children.2"/>
+  <transitions name="0.2.1.1TOAdvertising_Producers" source="//@nodes.0/@Children.1/@Children.0/@Children.0" target="//@nodes.0/@Children.1/@Children.0/@Children.1"/>
+  <transitions name="Advertising_ProducersTO0.2.1.3" source="//@nodes.0/@Children.1/@Children.0/@Children.1" target="//@nodes.0/@Children.1/@Children.0/@Children.2"/>
+  <transitions name="0.2.2.1TOAdvertising_MarketPlace" source="//@nodes.0/@Children.1/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="Advertising_MarketPlaceTO0.2.2.3" source="//@nodes.0/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.1/@Children.2"/>
+  <transitions name="0.2.1.2.2.1TOPriceCheck" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="PriceCheckTOSendMessage_Producers" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.2"/>
+  <transitions name="SendMessage_ProducersTO0.2.1.2.2.4" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.2" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.3"/>
+  <transitions name="0.2.1.2.1TO_open_group_PriceCheck_sequence_SendMessage_Producers_close_group_" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1"/>
+  <transitions name="_open_group_PriceCheck_sequence_SendMessage_Producers_close_group_TO_open_group_PriceCheck_sequence_SendMessage_Producers_close_group_" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1"/>
+  <transitions name="_open_group_PriceCheck_sequence_SendMessage_Producers_close_group_TO0.2.1.2.3" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.2"/>
+  <transitions name="0.2.2.2.2.1TOReceiveMessage_MarketPlace" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="ReceiveMessage_MarketPlaceTOAddTheOfferToTheTable" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1/@Children.2"/>
+  <transitions name="AddTheOfferToTheTableTO0.2.2.2.2.4" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1/@Children.2" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1/@Children.3"/>
+  <transitions name="0.2.2.2.1TO_open_group_ReceiveMessage_MarketPlace_sequence_AddTheOfferToTheTable_close_group_" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="_open_group_ReceiveMessage_MarketPlace_sequence_AddTheOfferToTheTable_close_group_TO_open_group_ReceiveMessage_MarketPlace_sequence_AddTheOfferToTheTable_close_group_" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="_open_group_ReceiveMessage_MarketPlace_sequence_AddTheOfferToTheTable_close_group_TO0.2.2.2.3" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.2"/>
+</statechart:Model>

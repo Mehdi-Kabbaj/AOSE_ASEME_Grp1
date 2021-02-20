@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAG:SAGmodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SAG="http://www.amcl.tuc.gr/aseme/metamodels/SAG">
+  <goals name="Buy Energy" depender="//@actors.0" dependee="//@actors.1"/>
+  <goals name="Advertising" depender="//@actors.1" dependee="//@actors.2"/>
+  <goals name="Maximize Gain" depender="//@actors.1"/>
+  <goals name="Maximize Utilities" depender="//@actors.0"/>
+  <goals name="Consult Table" depender="//@actors.0" dependee="//@actors.2"/>
+  <actors my_goal="//@goals.0 //@goals.4 //@goals.3" name="Consumers"/>
+  <actors my_goal="//@goals.2 //@goals.1" name="Producers"/>
+  <actors name="MarketPlace"/>
+</SAG:SAGmodel>

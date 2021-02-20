@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AIP:AIPmodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:AIP="http://www.acml.tuc.gr/aseme/metamodels/AIP">
+  <participants name="BuyEnergy_Consumers" engaging_rules="has access to the marketplace table" outcomes="Reservation made" liveness="(ChooseProducer.SendMessage_Consumers)+"/>
+  <participants name="BuyEnergy_Producers" engaging_rules="he advertised his offers in the marketplace" outcomes="number of clients for today updated" liveness="receiveMessage_Producers+"/>
+  <participants name="Advertising_Producers" engaging_rules="cyclic action, every 24 hours" outcomes="Updated his offers and sent it to the MarketPlace" liveness="(PriceCheck.SendMessage_Producers)+"/>
+  <participants name="Advertising_MarketPlace" outcomes="MarketPlace table updated" liveness="(ReceiveMessage_MarketPlace.AddTheOfferToTheTable)+"/>
+  <participants name="ConsultTable_Consumers" engaging_rules="cyclic action, every 24 hours" outcomes="has access to the updated MarketPlace table" liveness="(SendMessage_Consumers.ReceiveMessage_Consumers)+"/>
+  <participants name="ConsultTable_MarketPlace" engaging_rules="MarketPlace Table must exist" outcomes="has sent a copy of his table" liveness="(ReceiveMessage_MarketPlace.SendMessage_MarketPlace)+"/>
+  <protocols participants="//@participants.0 //@participants.1" name="BuyEnergy"/>
+  <protocols participants="//@participants.2 //@participants.3" name="Advertising"/>
+  <protocols participants="//@participants.4 //@participants.5" name="ConsultTable"/>
+</AIP:AIPmodel>

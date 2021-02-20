@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SUC:SUCmodel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:SUC="http://www.amcl.tuc.gr/aseme/metamodels/SUC">
+  <roles participates_in="//@usecases.0 //@usecases.3 //@usecases.4 //@usecases.5 //@usecases.6 //@usecases.10" name="Consumers" type="System"/>
+  <roles participates_in="//@usecases.0 //@usecases.1 //@usecases.2 //@usecases.8 //@usecases.11 //@usecases.13" name="Producers" type="System"/>
+  <roles participates_in="//@usecases.1 //@usecases.4 //@usecases.7 //@usecases.9 //@usecases.12" name="MarketPlace" type="System"/>
+  <usecases participant="//@roles.0 //@roles.1" include="//@usecases.6 //@usecases.10 //@usecases.11" name="BuyEnergy"/>
+  <usecases participant="//@roles.1 //@roles.2" include="//@usecases.8 //@usecases.9 //@usecases.13 //@usecases.12" name="Advertising"/>
+  <usecases participant="//@roles.1" name="MaximizeGain"/>
+  <usecases participant="//@roles.0" name="MaximizeUtilities"/>
+  <usecases participant="//@roles.0 //@roles.2" include="//@usecases.7 //@usecases.5 //@usecases.12 //@usecases.10" name="ConsultTable"/>
+  <usecases participant="//@roles.0" name="ReceiveMessage_Consumers"/>
+  <usecases participant="//@roles.0" name="ChooseProducer"/>
+  <usecases participant="//@roles.2" name="SendMessage_MarketPlace"/>
+  <usecases participant="//@roles.1" name="SendMessage_Producers"/>
+  <usecases participant="//@roles.2" name="AddTheOfferToTheTable"/>
+  <usecases participant="//@roles.0" name="SendMessage_Consumers"/>
+  <usecases participant="//@roles.1" name="receiveMessage_Producers"/>
+  <usecases participant="//@roles.2" name="ReceiveMessage_MarketPlace"/>
+  <usecases participant="//@roles.1" name="PriceCheck"/>
+</SUC:SUCmodel>
