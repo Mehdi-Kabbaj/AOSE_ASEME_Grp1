@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF8"?>
+<statechart:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:statechart="http://statechart/1.0" name="Consumers">
+  <nodes name="Consumers" label="0" type="OR">
+    <Children name="0.1" label="0.1" type="START"/>
+    <Children name="ConsultTable_Consumers_parallel_BuyEnergy_Consumers" label="0.2" type="AND">
+      <Children name="0.2.1" label="0.2.1" type="OR">
+        <Children name="0.2.1.1" label="0.2.1.1" type="START"/>
+        <Children name="ConsultTable_Consumers" label="0.2.1.2" type="OR">
+          <Children name="0.2.1.2.1" label="0.2.1.2.1" type="START"/>
+          <Children name="_open_group_SendMessage_Consumers_sequence_ReceiveMessage_Consumers_close_group_" label="0.2.1.2.2" type="OR">
+            <Children name="0.2.1.2.2.1" label="0.2.1.2.2.1" type="START"/>
+            <Children name="SendMessage_Consumers" label="0.2.1.2.2.2" type="BASIC" activity="FIPA Message Exchange"/>
+            <Children name="ReceiveMessage_Consumers" label="0.2.1.2.2.3" type="BASIC" activity="FIPA Message Exchange"/>
+            <Children name="0.2.1.2.2.4" label="0.2.1.2.2.4" type="END"/>
+          </Children>
+          <Children name="0.2.1.2.3" label="0.2.1.2.3" type="END"/>
+        </Children>
+        <Children name="0.2.1.3" label="0.2.1.3" type="END"/>
+      </Children>
+      <Children name="0.2.2" label="0.2.2" type="OR">
+        <Children name="0.2.2.1" label="0.2.2.1" type="START"/>
+        <Children name="BuyEnergy_Consumers" label="0.2.2.2" type="OR">
+          <Children name="0.2.2.2.1" label="0.2.2.2.1" type="START"/>
+          <Children name="_open_group_ChooseProducer_sequence_SendMessage_Consumers_close_group_" label="0.2.2.2.2" type="OR">
+            <Children name="0.2.2.2.2.1" label="0.2.2.2.2.1" type="START"/>
+            <Children name="ChooseProducer" label="0.2.2.2.2.2" type="BASIC" activity="Decision Theory"/>
+            <Children name="SendMessage_Consumers" label="0.2.2.2.2.3" type="BASIC" activity="FIPA Message Exchange"/>
+            <Children name="0.2.2.2.2.4" label="0.2.2.2.2.4" type="END"/>
+          </Children>
+          <Children name="0.2.2.2.3" label="0.2.2.2.3" type="END"/>
+        </Children>
+        <Children name="0.2.2.3" label="0.2.2.3" type="END"/>
+      </Children>
+    </Children>
+    <Children name="0.3" label="0.3" type="END"/>
+  </nodes>
+  <transitions name="0.1TOConsultTable_Consumers_parallel_BuyEnergy_Consumers" source="//@nodes.0/@Children.0" target="//@nodes.0/@Children.1"/>
+  <transitions name="ConsultTable_Consumers_parallel_BuyEnergy_ConsumersTO0.3" source="//@nodes.0/@Children.1" target="//@nodes.0/@Children.2"/>
+  <transitions name="0.2.1.1TOConsultTable_Consumers" source="//@nodes.0/@Children.1/@Children.0/@Children.0" target="//@nodes.0/@Children.1/@Children.0/@Children.1"/>
+  <transitions name="ConsultTable_ConsumersTO0.2.1.3" source="//@nodes.0/@Children.1/@Children.0/@Children.1" target="//@nodes.0/@Children.1/@Children.0/@Children.2"/>
+  <transitions name="0.2.2.1TOBuyEnergy_Consumers" source="//@nodes.0/@Children.1/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="BuyEnergy_ConsumersTO0.2.2.3" source="//@nodes.0/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.1/@Children.2"/>
+  <transitions name="0.2.1.2.2.1TOSendMessage_Consumers" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="SendMessage_ConsumersTOReceiveMessage_Consumers" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.2"/>
+  <transitions name="ReceiveMessage_ConsumersTO0.2.1.2.2.4" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.2" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1/@Children.3"/>
+  <transitions name="0.2.1.2.1TO_open_group_SendMessage_Consumers_sequence_ReceiveMessage_Consumers_close_group_" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1"/>
+  <transitions name="_open_group_SendMessage_Consumers_sequence_ReceiveMessage_Consumers_close_group_TO_open_group_SendMessage_Consumers_sequence_ReceiveMessage_Consumers_close_group_" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1"/>
+  <transitions name="_open_group_SendMessage_Consumers_sequence_ReceiveMessage_Consumers_close_group_TO0.2.1.2.3" source="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.0/@Children.1/@Children.2"/>
+  <transitions name="0.2.2.2.2.1TOChooseProducer" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="ChooseProducerTOSendMessage_Consumers" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1/@Children.2"/>
+  <transitions name="SendMessage_ConsumersTO0.2.2.2.2.4" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1/@Children.2" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1/@Children.3"/>
+  <transitions name="0.2.2.2.1TO_open_group_ChooseProducer_sequence_SendMessage_Consumers_close_group_" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.0" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="_open_group_ChooseProducer_sequence_SendMessage_Consumers_close_group_TO_open_group_ChooseProducer_sequence_SendMessage_Consumers_close_group_" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1"/>
+  <transitions name="_open_group_ChooseProducer_sequence_SendMessage_Consumers_close_group_TO0.2.2.2.3" source="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.1" target="//@nodes.0/@Children.1/@Children.1/@Children.1/@Children.2"/>
+</statechart:Model>
